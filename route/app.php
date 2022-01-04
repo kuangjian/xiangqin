@@ -15,3 +15,7 @@ Route::get('think', function () {
 });
 
 Route::get('hello/:name', 'index/hello');
+
+Route::resource('user', 'User');
+Route::get('province', 'Province/index');
+Route::get('city/:id', 'city/index');

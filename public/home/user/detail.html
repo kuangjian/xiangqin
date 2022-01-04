@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>卡片 - 光年(Light Year Admin V4)后台管理系统模板</title>
+    <link rel="icon" href="favicon.ico" type="../../static/image/ico">
+    <meta name="keywords" content="LightYear,LightYearAdmin,光年,后台模板,后台管理系统,光年HTML模板">
+    <meta name="description" content="Light Year Admin V4是一个后台管理系统的HTML模板，基于Bootstrap v4.4.1。">
+    <meta name="author" content="yinqi">
+    <link href="../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../static/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="../../static/css/style.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid p-t-15" id="app">
+        <div class="lyear-divider">照片</div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card-group">
+                    <div class="card">
+                        <img class="card-img-top" src="../../static/images/slide/img-slide-1.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">池</h4>
+                            <p>彩棹浮太液，清觞醉习家。诗情对明月，云曲拂流霞。</p>
+                            <p>烟散龙形净，波含凤影斜。安仁动秋兴，鱼鸟思空赊。</p>
+                            <p><small>李峤</small></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card-img-top" src="../../static/images/slide/img-slide-2.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">石</h4>
+                            <p>宗子维城固，将军饮羽威。岩花鉴里发，云叶锦中飞。</p>
+                            <p>入宋星初陨，过湘燕早归。倘因持补极，宁复想支机。</p>
+                            <p><small>李峤</small></p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img class="card-img-top" src="../../static/images/slide/img-slide-3.jpg" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">桃</h4>
+                            <p>独有成蹊处，秾华发井傍。山风凝笑脸，朝露泫啼妆。</p>
+                            <p>隐士颜应改，仙人路渐长。还欣上林苑，千岁奉君王。</p>
+                            <p><small>李峤</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lyear-divider">用户信息</div>
+
+        <div class="row">
+
+            <div class="col-md-12 col-lg-12">
+                <div class="card text-white bg-primary">
+                    <header class="card-header">
+                        <div class="card-title">用户信息</div>
+                        <ul class="card-actions">
+                            <li><a href="#"><i class="mdi mdi-close"></i></a></li>
+                        </ul>
+                    </header>
+
+                    <div class="card-body" v-if="info">
+                        <p>ID：{{ info.user_no }}，姓名：{{ info.nick_name }}，性别：{{ info.gender_text }}，生日：{{ info.birthday }}，身高：{{ info.height }}cm，体重：{{ info.weight }}kg，生肖：{{ info.zodiac_name }}，星座：{{ info.constellation_name }}，民族：{{ info.nationality_name }}，血型：{{ info.blood_type_name }} </p>
+                        <p>微信：{{ info.wechat }}，电话：{{ info.telephone }}，QQ：{{ info.qq }}</p>
+                        <p>是否独生：{{ info.only_child_text }}，婚姻状况：{{ info.marital_status_name }}，子女情况：{{ info.have_children_name }}</p>
+                        <p>购车情况：{{ info.buy_car_name }}，住房情况：{{ info.buy_house_name }}</p>
+                        <p>薪资：{{ info.salary }}元/月，公司：{{ info.company }}</p>
+                        <p>户籍信息：{{ info.household_province_name }} {{ info.household_city_name }} {{ info.household_county_name }} {{ info.household_town_name }} {{ info.household_village_name }}</p>
+                        <p>所在地信息：{{ info.location_province_name }} {{ info.location_city_name }} {{ info.location_county_name }} {{ info.location_town_name }} {{ info.location_village_name }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="col-md-12 col-lg-12">
+                <div class="card text-white bg-info">
+                    <header class="card-header">
+                        <div class="card-title">择偶信息</div>
+                        <ul class="card-actions">
+                            <li><a href="#"><i class="mdi mdi-close"></i></a></li>
+                        </ul>
+                    </header>
+
+                    <div class="card-body" v-if="info">
+                        <p>择偶信息：{{ info.spouse_province_name }} {{ info.spouse_city_name }} {{ info.spouse_county_name }}，年龄：{{ info.spouse_age_start }}~{{ info.spouse_age_end }}岁，身高：{{ info.spouse_height_start }}~{{ info.spouse_height_end }}cm，学历：{{ info.spouse_education_name }}，民族：{{ info.spouse_nationality_name }}</p>
+                    </div>
+                </div>
+            </div> -->
+
+
+        </div>
+
+        <div class="lyear-divider">择偶信息</div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="card text-white" :class="genderClass ? 'bg-danger' : 'bg-info'">
+                    <header class="card-header">
+                        <div class="card-title">择偶信息</div>
+                        <ul class="card-actions">
+                            <li><a href="#"><i class="mdi mdi-close"></i></a></li>
+                        </ul>
+                    </header>
+
+                    <div class="card-body" v-if="info">
+                        <p>择偶信息：{{ info.spouse_province_name }} {{ info.spouse_city_name }} {{ info.spouse_county_name }}，年龄：{{ info.spouse_age_start }}~{{ info.spouse_age_end }}岁，身高：{{ info.spouse_height_start }}~{{ info.spouse_height_end }}cm，学历：{{ info.spouse_education_name }}，民族：{{ info.spouse_nationality_name }}</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="../../static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../static/js/popper.min.js"></script>
+    <script type="text/javascript" src="../../static/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../static/js/main.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var userId = GetQueryString("userId");
+            new Vue({
+                el: '#app',
+                data () {
+                    return {
+                        column: [
+                            { name: 'ID/姓名' },
+                            { name: '联系方式' },
+                            { name: '身高/体重' },
+                            { name: '婚姻/子女' },
+                            { name: '资产' },
+                            { name: '薪资/工作' },
+                            { name: '户籍' },
+                            { name: '所在地' },
+                            { name: '择偶要求' },
+                            { name: '操作' },
+                        ],
+                        info: null,
+                        genderClass: null,
+                    }
+                },
+                mounted () {
+                    var that = this;
+                    axios
+                        .get('http://github/xiangqin/public/index.php/user/' + userId)
+                        // .then(response => (this.info = response.data.data))
+                        .then(function(response) {
+                            var res = response.data.data;
+                            that.info = res;
+                            that.genderClass = res.gender == 1 ? true : false;
+                        })
+                        .catch(function (error) { // 请求失败处理
+                            console.log(error);
+                        });
+
+                    // console.log(this.$route.query.userId)
+                },
+            })
+        })
+
+        function GetQueryString(name) {
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if(r!=null) return unescape(r[2]); return null;
+        }
+    </script>
+</body>
+
+</html>

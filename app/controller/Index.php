@@ -2,7 +2,7 @@
 namespace app\controller;
 
 use app\BaseController;
-use app\controller\RandChinaName;
+use app\RandChinaName;
 
 class Index extends BaseController
 {
